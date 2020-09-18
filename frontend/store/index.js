@@ -1,5 +1,5 @@
 export const state = () => ({
-
+  authenticated: false
 });
 
 export const getters = {
