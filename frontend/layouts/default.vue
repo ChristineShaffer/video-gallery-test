@@ -1,17 +1,19 @@
 <template>
   <div>
+    <NavBar />
+
     <Nuxt />
   </div>
 </template>
+
+<script>
+
+</script>
 
 <style>
   @font-face {
     font-family: Quicksand;
     src: url("../assets/fonts/quicksand-regular.ttf");
-  }
-
-  :root {
-    --algaecal-green: #013B30;
   }
 
   html {
