@@ -19,7 +19,6 @@
     data() {
       return {
         videos: [
-          /*
           {
             "id": 1,
             "title": "What It's Like To Work At AlgaeCal",
@@ -63,15 +62,14 @@
             "description": "Bone Healthy Recipes",
             "video_id": "ajoe5d0jk0"
           }
-          */
         ]
       };
     },
 
     async asyncData({ $axios }) {
       try {
-        const data = await $axios.get("http://localhost:8080/videos");
-        console.log(data);
+        // TODO: Figure out why video endpoint throwing error then move video load here
+        // const data = await $axios.get("http://localhost:8080/videos");
       } catch (error) {
         console.log(error);
       }
