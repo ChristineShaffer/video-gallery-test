@@ -8,11 +8,7 @@
 
 </script>
 
-<style>
-  body {
-    background-color: var(--algaecal-green);
-  }
-
+<style scoped>
   .container {
     margin: 0 auto;
     min-height: 100vh;
@@ -20,5 +16,9 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+  }
+
+  body {
+    background-color: var(--algaecal-green);
   }
 </style>

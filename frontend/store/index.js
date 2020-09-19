@@ -35,7 +35,6 @@ export const actions = {
 
 export const mutations = {
   SET_AUTH (state, value) {
-    console.log(`Set auth to ${value}`);
     state.authenticated = value;
   }
 };

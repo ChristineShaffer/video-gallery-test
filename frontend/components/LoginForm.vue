@@ -19,7 +19,7 @@
       <b-button type="submit" :disabled="form.username.length < 3" class="button--green" id="login-button">
         Login
       </b-button>
-      <p id="error-message" v-show="form.error">Sorry, that username is not found.</p>
+      <p id="error-message" v-show="form.error">Sorry, that username doesn't exist.</p>
     </b-form>
   </b-card>
 </template>
@@ -50,7 +50,22 @@
   }
 </script>
 
-<style>
+<style scoped>
+  .button--green {
+    display: inline-block;
+    border-radius: 30px;
+    border: 1px solid #3b8070;
+    background-color: #3b8070;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 40px;
+  }
+
+  .button--green:hover:not(:disabled) {
+    color: #fff;
+    background-color: #35495e;
+  }
+
   #error-message {
     color: red;
     margin-top: 2em;

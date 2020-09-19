@@ -23,4 +23,9 @@ return function (App $app) {
         $group->get('', ListUsersAction::class);
         $group->get('/{id}', ViewUserAction::class);
     });
+
+    $app->group('/videos', function (Group $group) {
+        $group->get('', ListVideosAction::class);
+        $group->get('/{id}', ViewVideoAction::class);
+    });
 };

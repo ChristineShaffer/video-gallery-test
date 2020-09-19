@@ -1,77 +1,120 @@
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col">
-        <h1>Welcome to Our Video Library</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <b-list-group>
-          <b-list-group-item>Cras justo odio</b-list-group-item>
-          <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
-          <b-list-group-item>Morbi leo risus</b-list-group-item>
-          <b-list-group-item>Porta ac consectetur ac</b-list-group-item>
-          <b-list-group-item>Vestibulum at eros</b-list-group-item>
-        </b-list-group>
-      </div>
+  <div>
+    <div class="container">
+      <nuxt-link to="/videos" class="row">
+        <div class="col col-sm-12 col-md-4 p-1" v-for="video in videos" :key="video.id">
+          <div class="video-card p-4">
+            <img src="~/static/img/video-cover.png" alt="Video Cover">
+            <h1 class="title">{{ video.title }}</h1>
+            <p>{{ video.description }}</p>
+          </div>
+        </div>
+      </nuxt-link>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      form: {
-        email: ''
-      },
-    };
-  },
-  methods: {
-    onSubmit(){
-      console.log('A form was submitted');
+  export default {
+    data() {
+      return {
+        videos: [
+          /*
+          {
+            "id": 1,
+            "title": "What It's Like To Work At AlgaeCal",
+            "description": "Discover what it's like to work at AlgaeCal with this quick video!",
+            "video_id": "m3ralniniq"
+          },
+          {
+            "id": 2,
+            "title": "Esther Mangini Testimonial",
+            "category": "Testimonials",
+            "description": "Esther's journey to healthier bones",
+            "video_id": "ybyot0dm7q"
+          },
+          {
+            "id": 3,
+            "title": "Teresa Cucurull Testimonial",
+            "description": "Teresa's journey to healthier bones",
+            "video_id": "mhmv73k989"
+          },
+          {
+            "id": 4,
+            "title": "Perfect Pilates For Osteoporosis - Legwork",
+            "description": "Bone Healthy Exercises!",
+            "video_id": "3n5p02h26w"
+          },
+          {
+            "id": 5,
+            "title": "Perfect Pilates For Osteoporosis - Amazing Abs",
+            "description": "Bone Healthy Exercises!",
+            "video_id": "kkgeu7v2va"
+          },
+          {
+            "id": 6,
+            "title": "Lara's Homemade Granola",
+            "description": "Bone Healthy Recipes",
+            "video_id": "m6amjftj3w"
+          },
+          {
+            "id": 7,
+            "title": "Brazil Nut Pesto",
+            "description": "Bone Healthy Recipes",
+            "video_id": "ajoe5d0jk0"
+          }
+          */
+        ]
+      };
     },
-  }
-}
+
+    async asyncData({ $axios }) {
+      try {
+        const data = await $axios.get("http://localhost:8080/videos");
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+      return {};
+    }
+  };
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+<style scoped>
+  a {
+    text-decoration: none;
+    color: var(--algaecal-green);
+  }
 
-.title {
-  font-family: 'Quicksand',
-  'Source Sans Pro',
-  -apple-system,
-  BlinkMacSystemFont,
-  'Segoe UI',
-  Roboto,
-  'Helvetica Neue',
-  Arial,
-  sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
+  a:hover {
+    text-decoration: none;
+  }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
+  .container {
+    font-family:
+      "Quicksand",
+      "Source Sans Pro",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      "Helvetica Neue",
+      Arial,
+      sans-serif;
+  }
 
-.links {
-  padding-top: 15px;
-}
+  .video-card {
+    border: 1px solid grey;
+    height: 100%;
+  }
+
+  .video-card img {
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 1.5em;
+    margin-top: 1em;
+    font-weight: bold;
+  }
 </style>
