@@ -19,6 +19,7 @@
       <b-button type="submit" :disabled="form.username.length < 3" class="button--green" id="login-button">
         Login
       </b-button>
+      <p id="error-message" v-show="form.error">Sorry, that username is not found.</p>
     </b-form>
   </b-card>
 </template>
@@ -28,20 +29,33 @@
     data() {
       return {
         form: {
-          username: ""
+          username: "",
+          error: false
         }
       };
     },
     methods: {
-      onSubmit(event){
-        console.log("A form was submitted");
+      async onSubmit(event){
         event.preventDefault();
+
+        try {
+          await this.$store.dispatch("authenticate", { username: this.form.username });
+          this.$router.push("/videos");
+        } catch (error) {
+          // User didn't exist or something went wrong
+          this.form.error = true;
+        }
       }
     }
   }
 </script>
 
 <style>
+  #error-message {
+    color: red;
+    margin-top: 2em;
+  }
+
   #login-button {
     margin-top: 2em;
   }
