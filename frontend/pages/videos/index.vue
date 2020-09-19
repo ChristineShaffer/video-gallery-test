@@ -1,15 +1,17 @@
 <template>
   <div>
     <div class="container">
-      <nuxt-link to="/videos" class="row">
+      <div class="row">
         <div class="col col-sm-12 col-md-4 p-1" v-for="video in videos" :key="video.id">
           <div class="video-card p-4">
-            <img src="~/static/img/video-cover.png" alt="Video Cover">
-            <h1 class="title">{{ video.title }}</h1>
-            <p>{{ video.description }}</p>
+            <nuxt-link :to="`/${video.video_id}`">
+              <img src="~/static/img/video-cover.png" alt="Video Cover">
+              <h1 class="title">{{ video.title }}</h1>
+              <p>{{ video.description }}</p>
+            </nuxt-link>
           </div>
         </div>
-      </nuxt-link>
+      </div>
     </div>
   </div>
 </template>
